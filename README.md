@@ -1,4 +1,6 @@
-bash-training
-=============
+modularized-linux-training
+==========================
 
-Materials about Bash
+Materials about linux systems:
+
+* Bash
