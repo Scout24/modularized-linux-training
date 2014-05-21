@@ -1,0 +1,12 @@
+Package: bash-essentials
+Version: VERSION
+Priority: optional
+Section: web
+Architecture: all
+Maintainer: Stefan Neben <stefan.neben@immobilienscout24.de>
+Homepage: https://github.com/ImmobilienScout24/modularized-linux-training
+Description: Bash essentials man page
+ Essential tricks for using Bash. Part of ImmobilienScout24 Linux Training.
+ .
+ This man page should help with the daily work to improve and fasten your
+ ability to write clean and compact bash scripts.
