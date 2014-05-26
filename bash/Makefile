@@ -16,7 +16,7 @@ deb: clean
 	cp bash-essentials.1.markdown build/tmp/
 	ronn build/tmp/bash-essentials.1.markdown
 	sed -i "s/\\\'/\\\(aq/g" build/tmp/bash-essentials.1
-	gzip build/tmp/bash-essentials.1
+	gzip --best build/tmp/bash-essentials.1
 	install -m 0644 build/tmp/bash-essentials.1.gz build/deb/usr/share/man/man1/bash-essentials.1.gz
 	install -m 0644 DEBIAN/* build/deb/DEBIAN
 	sed -i -e s/VERSION/$(VERSION)/ build/deb/DEBIAN/control
