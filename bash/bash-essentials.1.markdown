@@ -75,13 +75,13 @@ and continue (resume) their execution at a later point. The following work in in
 
 * __fg__: Command for putting a job in foreground
 * __bg__: Command for putting a job in background
-* __Strg+Z__: Stop/suspend the current running process
+* __Ctrl+Z__: Stop/suspend the current running process
 
 Here is an simple example:
 
     $ top
     ...
-    Strg+Z
+    Ctrl+Z
     [1]+  Stopped              top
 
 The process is now suspended. To resume this process (the id is 1) use __fg__ to
@@ -914,7 +914,7 @@ Below a list with option examples (first for __set__, second for __shopt__):
 See _bash(1)_ under __SHELL BUILTIN COMMANDS__ and search then for __shopt__ for a complete list.
 
 ## SIGNALS
-Signals are important for inter-process communication. You can send signals to running programs with __kill__. With __trap__ it is possible to control the behaviour of a shell script when it receives a signal (see _signal(7)_ for more informations). Only SIGKILL and SIGSTOP cannot be caught. Here is an example for catching Strg+C:
+Signals are important for inter-process communication. You can send signals to running programs with __kill__. With __trap__ it is possible to control the behaviour of a shell script when it receives a signal (see _signal(7)_ for more informations). Only SIGKILL and SIGSTOP cannot be caught. Here is an example for catching Ctrl+C:
 
 	trap "echo -e '\nI have received the SIGINT signal\n' ; exit 0" SIGINT
 	while true ; do 

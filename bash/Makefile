@@ -12,13 +12,14 @@ all: deb rpm
 	ls -l dist/*.deb dist/*.rpm
 
 deb: clean
-	mkdir -p dist build/tmp build/deb/DEBIAN build/deb/usr/share/man/man1 build/deb/DEBIAN
+	mkdir -p dist build/tmp build/deb/DEBIAN build/deb/usr/share/man/man1 build/deb/usr/share/doc/bash-essentials build/deb/DEBIAN
 	cp bash-essentials.1.markdown build/tmp/
 	ronn build/tmp/bash-essentials.1.markdown
 	sed -i "s/\\\'/\\\(aq/g" build/tmp/bash-essentials.1
-	gzip build/tmp/bash-essentials.1
+	gzip --best build/tmp/bash-essentials.1
 	install -m 0644 build/tmp/bash-essentials.1.gz build/deb/usr/share/man/man1/bash-essentials.1.gz
-	install -m 0644 DEBIAN/* build/deb/DEBIAN
+	install -m 0644 DEBIAN/control build/deb/DEBIAN
+	install -m 0644 DEBIAN/copyright build/deb/usr/share/doc/bash-essentials
 	sed -i -e s/VERSION/$(VERSION)/ build/deb/DEBIAN/control
 	fakeroot dpkg -b build/deb dist
 
