@@ -2,7 +2,7 @@ TOPLEVEL = bash-essentials.1.markdown bash-essentials.spec
 
 GITREV := HEAD
 
-REVISION := "$(shell git rev-list $(GITREV) -- $(TOPLEVEL) 2>/dev/null| wc -l)$(EXTRAREV)"
+REVISION := $(shell git rev-list $(GITREV) -- $(TOPLEVEL) 2>/dev/null| wc -l)$(EXTRAREV)
 VERSION := $(shell cat VERSION 2>/dev/null).$(REVISION)
 PV = bash-essentials-$(VERSION)
 
@@ -27,7 +27,7 @@ srpm: clean
 	mkdir -p dist build/$(PV) build/BUILD
 	cp -r $(TOPLEVEL) Makefile build/$(PV)
 	mv build/$(PV)/*.spec build/
-	sed -i -e s/VERSION/$(VERSION)/ build/*.spec
+	sed -i -e 's/Version:.*/Version: $(VERSION)/' build/*.spec
 	tar -czf build/$(PV).tar.gz -C build $(PV)
 	rpmbuild --define="_topdir $(CURDIR)/build" --define="_sourcedir $(CURDIR)/build" --define="_srcrpmdir $(CURDIR)/dist" --nodeps -bs build/*.spec
 
