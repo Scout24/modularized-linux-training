@@ -1,12 +1,12 @@
 Summary: Bash essentials man page
 Name: bash-essentials
 # Automated build process will fill in Version and Release
-Version: 0
-Release: 0
-License: Creative Commons
+Version: VERSION
+Release: 3
+License: Creative Commons (CC BY-SA 3.0)
 Vendor: Immobilien Scout GmbH
-Packager: $Id: bash-essentials.spec 70084 2014-01-06 17:11:35Z sschapiro $
-Group: is24
+Packager: $Id: bash-essentials.spec 88759 2014-05-21 14:29:55Z sneben $
+Group: Documentation/Man
 Source0: %{name}-%{version}.tar.gz
 URL: https://github.com/ImmobilienScout24/modularized-linux-training
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -37,3 +37,4 @@ install -m 0644 bash-essentials.1.gz %{buildroot}%{_mandir}/man1
 %files
 %defattr(-,root,root,-)
 %{_mandir}/man1/bash-essentials.1.gz
+
