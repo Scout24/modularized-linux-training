@@ -3,10 +3,10 @@ Name: bash-essentials
 # Automated build process will fill in Version and Release
 Version: VERSION
 Release: 3
-License: Creative Commons (CC BY-SA 3.0)
+License: CC-BY-SA
 Vendor: Immobilien Scout GmbH
 Packager: $Id: bash-essentials.spec 88759 2014-05-21 14:29:55Z sneben $
-Group: Documentation/Man
+Group: Documentation
 Source0: %{name}-%{version}.tar.gz
 URL: https://github.com/ImmobilienScout24/modularized-linux-training
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -37,4 +37,8 @@ install -m 0644 bash-essentials.1.gz %{buildroot}%{_mandir}/man1
 %files
 %defattr(-,root,root,-)
 %{_mandir}/man1/bash-essentials.1.gz
+
+%changelog
+* Tue May 27 2014 Stefan Neben <stefan.neben@gmail.com> - 1.3-3
+- Fixing some minor issues in SPEC file to be rpmlint friendly
 
