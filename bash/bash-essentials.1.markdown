@@ -910,8 +910,28 @@ Below a list with option examples (first for __set__, second for __shopt__):
 * __-e__, __-o errexit__: Exit immediately if an error occured
 * __-f__, __-o noglob__: Deactivate wildcard expansion
 * __-o nullglob__ (Only with shopt): If set, bash allows patterns which match no files to expand to a null string, rather than themselves
+* __-x	:	Script debugging, print commands and their arguments as they are executed
 
 See _bash(1)_ under __SHELL BUILTIN COMMANDS__ and search then for __shopt__ for a complete list.
+(alternatively use "help set" and "help shopt")
+
+### debug bash scripts
+Often it is not a good idea to debug complex shell scripts by adding "echo" commands to it.
+Bash provide a good possibility to analyze the behavior of running scripts.
+
+	export PS4='+${BASH_SOURCE}:${LINENO}:${FUNCNAME[0]-*no-function*}: '
+	# log debug to a file
+	exec 5<>/tmp/trace.log; export BASH_XTRACEFD=5
+	# start tracing
+	set -x
+	# section to analyze
+	ls -l|wc -l
+	# stop tracing
+	set +x
+
+Add "set -x" and "set +x" around the section you want to analyze - probably the whole script.
+If you suppress the third line, the debug output is logged to STDERR instead of the filefile "/tmp/trace.log".
+Without defining PS4 the standard debug output is shown - inly the executed command is shown.
 
 ## SIGNALS
 Signals are important for inter-process communication. You can send signals to running programs with __kill__. With __trap__ it is possible to control the behaviour of a shell script when it receives a signal (see _signal(7)_ for more informations). Only SIGKILL and SIGSTOP cannot be caught. Here is an example for catching Ctrl+C:
@@ -932,3 +952,4 @@ To ensure readable and maintainable scripts it is useful to follow some general 
 * Indentation should be done with 4 whitespaces. Use Tabs for HERE documents.
 * Use __trap__ with __EXIT__ to install an exit handler to cleanup temporary files etc. regardless of why the scripts exits.
 
+# vim:noexpandtab::
