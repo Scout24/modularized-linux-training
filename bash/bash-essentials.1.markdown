@@ -952,4 +952,3 @@ To ensure readable and maintainable scripts it is useful to follow some general 
 * Indentation should be done with 4 whitespaces. Use Tabs for HERE documents.
 * Use __trap__ with __EXIT__ to install an exit handler to cleanup temporary files etc. regardless of why the scripts exits.
 
-# vim:noexpandtab::
