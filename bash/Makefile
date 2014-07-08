@@ -11,6 +11,12 @@ PV = bash-essentials-$(VERSION)
 all: deb rpm
 	ls -l dist/*.deb dist/*.rpm
 
+test:
+	mkdir -p dist build/tmp build/deb/DEBIAN build/deb/usr/share/man/man1 build/deb/usr/share/doc/bash-essentials build/deb/DEBIAN
+	cp bash-essentials.1.markdown build/tmp/
+	ronn build/tmp/bash-essentials.1.markdown
+	man build/tmp/bash-essentials.1
+
 deb: clean
 	mkdir -p dist build/tmp build/deb/DEBIAN build/deb/usr/share/man/man1 build/deb/usr/share/doc/bash-essentials build/deb/DEBIAN
 	cp bash-essentials.1.markdown build/tmp/
