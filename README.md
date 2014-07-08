@@ -11,6 +11,7 @@ The bash man page is huge and contains everything you always wanted to know abou
 To install (e.g. on debian) clone this repository and create the desired package:
 
     sudo apt-get install ruby-ronn
+    umask 0002
     git clone https://github.com/ImmobilienScout24/modularized-linux-training.git
     cd modularized-linux-training/bash/
     make deb
