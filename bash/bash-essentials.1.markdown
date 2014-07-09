@@ -947,8 +947,25 @@ Instead of giving a command list, a function name is also possible (__trap funct
 	trap exitfunc EXIT
 
 ## CODING GUIDELINE
-To ensure readable and maintainable scripts it is useful to follow some general rules. This section show some collected issues you should consider:
+To ensure readable and maintainable scripts it is useful to follow some general rules. This section show some collected issues you should consider.
 
+### General rules
 * Indentation should be done with 4 whitespaces. Use Tabs for HERE documents.
 * Use __trap__ with __EXIT__ to install an exit handler to cleanup temporary files etc. regardless of why the scripts exits.
+
+# Use lockfiles
+
+Cronjobs and all other jobs which can potentially run in parallel have to use lockfiles. Don't be optimistic that scripts always run with the same speed and same same system scenario. Lockfiles should always have to be handled by a trap which perform the cleanup on script termination.
+
+	LOCK_FILE="/var/run/lockfile-$(basename $0).lock"
+	# Aussteigen wenn das Lockfile schon existiert
+	if ( ! ( set -C; : > $LOCK_FILE 2> /dev/null ) );then
+  		echo "Already running, lockfile '${LOCK_FILE}' already exists"
+  		exit 1
+	fi
+	# Install a signal handler
+	trap "rm -f $LOCK_FILE; echo removed $LOCK_FILE;exit 1" EXIT TERM INT
+   # The script commands
+
+If the script is terminated by SIGINT (CTRL+c), by SIGTERM or by regulat termination, the lockfile will be removed.
 
