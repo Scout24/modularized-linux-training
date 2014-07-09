@@ -953,7 +953,7 @@ To ensure readable and maintainable scripts it is useful to follow some general 
 * Indentation should be done with 4 whitespaces. Use Tabs for HERE documents.
 * Use __trap__ with __EXIT__ to install an exit handler to cleanup temporary files etc. regardless of why the scripts exits.
 
-# Use lockfiles
+### Use lockfiles
 
 Cronjobs and all other jobs which can potentially run in parallel have to use lockfiles. Don't be optimistic that scripts always run with the same speed and same same system scenario. Lockfiles should always have to be handled by a trap which perform the cleanup on script termination.
 
