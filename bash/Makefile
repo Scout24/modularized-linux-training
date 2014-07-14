@@ -20,6 +20,7 @@ deb: clean
 	install -m 0644 build/tmp/bash-essentials.1.gz build/deb/usr/share/man/man1/bash-essentials.1.gz
 	install -m 0644 DEBIAN/control build/deb/DEBIAN
 	install -m 0644 DEBIAN/copyright build/deb/usr/share/doc/bash-essentials
+	find build/deb -type d -exec chmod 755 {} \;
 	sed -i -e s/VERSION/$(VERSION)/ build/deb/DEBIAN/control
 	fakeroot dpkg -b build/deb dist
 
