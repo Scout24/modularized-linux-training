@@ -80,7 +80,6 @@ and continue (resume) their execution at a later point. The following work in in
 Here is an simple example:
 
     $ top
-    ...
     Ctrl+Z
     [1]+  Stopped              top
 
