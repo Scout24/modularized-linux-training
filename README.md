@@ -1,4 +1,4 @@
-#This repository has been archived.
+This repository has been archived.
 
 modularized-linux-training
 ==========================
