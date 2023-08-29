@@ -1,3 +1,5 @@
+# This repository has been archived.
+
 modularized-linux-training
 ==========================
 How can we provide linux knowhow for all interested colleagues in form of an initial training, but also provide the used material for daily work? It should be easily and immediately accessible, so that you are able to have a quick look when you need it!
